@@ -346,6 +346,13 @@ export interface Footer {
     address?: string | null;
     address_url?: string | null;
   };
+  sprechzeiten?:
+    | {
+        day?: string | null;
+        time?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   navigation?:
     | {
         heading: string;
@@ -480,32 +487,82 @@ export interface Home {
     } | null;
   };
   unternehmen?: {
-    'link-title'?:
+    link_title?:
       | {
-          label?: string | null;
+          title?: {
+            label?: string | null;
+          };
+          sub_title?:
+            | {
+                links?:
+                  | {
+                      label?: string | null;
+                      sliderHeading?: string | null;
+                      slider?:
+                        | {
+                            'Slider Item'?:
+                              | {
+                                  sliderImage?: (string | null) | Media;
+                                  Heading?: string | null;
+                                  richText?: {
+                                    root: {
+                                      type: string;
+                                      children: {
+                                        type: any;
+                                        version: number;
+                                        [k: string]: unknown;
+                                      }[];
+                                      direction: ('ltr' | 'rtl') | null;
+                                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                                      indent: number;
+                                      version: number;
+                                    };
+                                    [k: string]: unknown;
+                                  } | null;
+                                  id?: string | null;
+                                }[]
+                              | null;
+                            'CTA Item'?:
+                              | {
+                                  CTAHeading?: string | null;
+                                  richText?: {
+                                    root: {
+                                      type: string;
+                                      children: {
+                                        type: any;
+                                        version: number;
+                                        [k: string]: unknown;
+                                      }[];
+                                      direction: ('ltr' | 'rtl') | null;
+                                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                                      indent: number;
+                                      version: number;
+                                    };
+                                    [k: string]: unknown;
+                                  } | null;
+                                  CTA_link?: {
+                                    label?: string | null;
+                                    url?: string | null;
+                                    target?: ('_self' | '_blank') | null;
+                                  };
+                                  id?: string | null;
+                                }[]
+                              | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                    }[]
+                  | null;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[]
       | null;
-    heading?: string | null;
-    Slider?:
+    Sub_link_title?:
       | {
-          'slider-Image'?: (string | null) | Media;
-          Heading?: string | null;
-          description?: {
-            root: {
-              type: string;
-              children: {
-                type: any;
-                version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
-            };
-            [k: string]: unknown;
-          } | null;
+          label?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -733,6 +790,13 @@ export interface FooterSelect<T extends boolean = true> {
         address?: T;
         address_url?: T;
       };
+  sprechzeiten?:
+    | T
+    | {
+        day?: T;
+        time?: T;
+        id?: T;
+      };
   navigation?:
     | T
     | {
@@ -855,19 +919,59 @@ export interface HomeSelect<T extends boolean = true> {
   unternehmen?:
     | T
     | {
-        'link-title'?:
+        link_title?:
+          | T
+          | {
+              title?:
+                | T
+                | {
+                    label?: T;
+                  };
+              sub_title?:
+                | T
+                | {
+                    links?:
+                      | T
+                      | {
+                          label?: T;
+                          sliderHeading?: T;
+                          slider?:
+                            | T
+                            | {
+                                'Slider Item'?:
+                                  | T
+                                  | {
+                                      sliderImage?: T;
+                                      Heading?: T;
+                                      richText?: T;
+                                      id?: T;
+                                    };
+                                'CTA Item'?:
+                                  | T
+                                  | {
+                                      CTAHeading?: T;
+                                      richText?: T;
+                                      CTA_link?:
+                                        | T
+                                        | {
+                                            label?: T;
+                                            url?: T;
+                                            target?: T;
+                                          };
+                                      id?: T;
+                                    };
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+            };
+        Sub_link_title?:
           | T
           | {
               label?: T;
-              id?: T;
-            };
-        heading?: T;
-        Slider?:
-          | T
-          | {
-              'slider-Image'?: T;
-              Heading?: T;
-              description?: T;
               id?: T;
             };
       };

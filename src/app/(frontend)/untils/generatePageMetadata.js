@@ -2,7 +2,7 @@ export default async function generatePageMetadata(params, fallback = {}) {
   try {
     const fetchUrl = `${
       process.env.NEXT_PUBLIC_BASE_URL ||
-      "https://laura-fies-2025.vercel.app/my-route?slug="
+      "https://www.meanova.de/my-route?slug="
     }${params}`;
 
     const metadataResponse = await fetch(fetchUrl, {
