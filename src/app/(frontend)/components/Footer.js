@@ -48,7 +48,7 @@ const Footer = ({ FooterData }) => {
                   )}
                   {kontakt.phone_urls && (
                     <li>
-                      <Link href={`tel:${kontakt.phone.replace(/[\s()-]/g, '')}`}role='link' className="flex items-start gap-8">
+                      <Link href={`tel:${kontakt.phone_urls.replace(/[\s()-]/g, '')}`}role='link' className="flex items-start gap-8">
                         <Image src="/images/phone.svg" alt="icon of phone" role="img" width={20} height={20} className='w-20 h-20' />
                         <span>{kontakt.phone}</span>
                       </Link>
