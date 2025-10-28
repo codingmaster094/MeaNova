@@ -15,7 +15,7 @@ const SEO_schema = async ({ slug, faqs }) => {
     if (!schemaJSON && (!faqs || faqs.length === 0)) return null;
 
     // The base URL for the page, which is currently used in mainEntityOfPage
-    const pageUrl = "https://laura-fies-2025.vercel.app"; // Define once
+    const pageUrl = "https://www.meanova.de"; // Define once
     // Build FAQ Schema
     const Schema =
       schemaJSON 

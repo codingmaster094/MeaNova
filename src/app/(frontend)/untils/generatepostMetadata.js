@@ -2,7 +2,7 @@ export default async function generatepostMetadata(params , fallback ={}) {
   try {
     const metadata = await fetch(
       `${process.env.NEXT_RATGEBER_SINGLE_BASE_URL ||
-      "https://lift-konzept.vercel.app/api/ratgeber?where[slug][equals]="
+      "https://www.meanova.de/api/ratgeber?where[slug][equals]="
       }${params}`,
       { next: { revalidate: 60 } }
     );

@@ -30,7 +30,7 @@ const Personalvermittlung = (
 
                             </div>
                             <div className="w-full lg:w-1/2 xxl:w-full xxl:-ml-[calc((100vw-1470px)/2)]">
-                                <Image src={Side_Image?.url} alt="Hero-Bild des Abschnitts 'Personalvermittlung in Nordrhein-Westfalen – Dafür steht Menova Consulting'" role="img" width={1920} height={900} fetchPriority="high" sizes="(max-width: 1024px) 100vw, 1920px" className="relative lg:sticky top-0 xxl:relative size-full lg:size-auto xxl:size-full object-cover" />
+                                <Image src={Side_Image?.url} alt="Hero-Bild des Abschnitts 'Personalvermittlung in Nordrhein-Westfalen – Dafür steht Menova Consulting'" role="img" width={1920} height={900} fetchPriority="high" sizes="(max-width: 1024px) 100vw, 1920px" className="relative lg:sticky top-0 lg:top-50 xxl:top-0 xxl:relative size-full lg:size-auto xxl:size-full object-cover" />
                             </div>
                         </div>
                     </div>

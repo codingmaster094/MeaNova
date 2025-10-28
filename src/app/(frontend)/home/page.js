@@ -57,6 +57,7 @@ const page = async() => {
         Heading={HomePageData?.kontakt?.Heading}
         SubHeading={HomePageData?.kontakt?.SubHeading}
         FormHeading={HomePageData?.kontakt?.FormHeading}
+        DatenschutzerklarungLink={HomePageData?.kontakt?.DatenschutzerklarungLink}
       />
     </>
   )

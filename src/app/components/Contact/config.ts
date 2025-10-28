@@ -32,5 +32,44 @@ export const Contact: Field = {
         de: '',
       },
     },
+    {
+      name: 'DatenschutzerklarungLink',
+      type: 'group',
+      label: {
+        en: 'privacy-policy Link',
+        de: 'Datenschutzerklärung Link',
+      },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          label: {
+            en: 'Link Label',
+            de: 'Link-Beschriftung',
+          },
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: {
+            en: 'URL',
+            de: 'URL',
+          },
+        },
+        {
+          name: 'target',
+          type: 'select',
+          label: {
+            en: 'Target',
+            de: 'Ziel',
+          },
+          options: [
+            { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
+            { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
+          ],
+          defaultValue: '_self',
+        },
+      ],
+    },
   ],
 }

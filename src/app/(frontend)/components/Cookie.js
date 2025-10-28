@@ -188,7 +188,7 @@ export default function Cookie({
         className || ""
       }`}
     >
-      <div className="flex flex-col gap-4 md:flex-row md:items-start">
+      <div className="flex flex-col gap-24 md:items-start">
         <div className="flex-1">
           <h2 id="cookie-banner-title" className="text-lg font-semibold tracking-tight">
             {texts.title}
@@ -209,11 +209,11 @@ export default function Cookie({
           )}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 md:justify-end flex-col">
+        <div className="flex flex-1 w-full items-center md:justify-start gap-8 sm:gap-16 sm:flex-row flex-col">
           <button
             type="button"
             onClick={handleDeclineAll}
-            className="border border-neutral-300 px-24 py-12 text-sm"
+            className="border border-neutral-300 px-24 py-12 text-sm max-w-154 w-full"
           >
             {texts.declineAllLabel}
           </button>
@@ -221,14 +221,14 @@ export default function Cookie({
             type="button"
             onClick={() => setShowSettings((s) => !s)}
             aria-expanded={showSettings}
-            className="border border-neutral-300 px-24 py-12 text-sm"
+            className="border border-neutral-300 px-24 py-12 text-sm max-w-154 w-full"
           >
             {texts.settingsLabel}
           </button>
           <button
             type="button"
             onClick={handleAcceptAll}
-            className="text-sm text-white btn-dark "
+            className="text-sm text-white bg-primary px-24 py-12 max-w-154 w-full"
           >
             {texts.acceptAllLabel}
           </button>

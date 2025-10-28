@@ -1,27 +1,24 @@
-import React from 'react'
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 const Footer = ({ FooterData }) => {
   // Safely destructure data with default empty objects/arrays to ensure data paths exist
   const {
-    footerlogo = {},
+    // footerlogo = {},
     kontakt = {},
     social = [],
     sprechzeiten = [],
     navigation = [],
     legalLinks = [],
     copyright = ""
-  } = FooterData || {}; // Default to an empty object if FooterData is undefined
-
-  // Safely extract the navigation menus array.
-  // navigation[0] might be undefined, so use optional chaining and a fallback array.
+  } = FooterData || {}; 
   const navMenus = navigation[0]?.menus ?? [];
+
   return (
     <>
       <footer>
         <div className="footer-top pt-50 md:pt-80 pb-50 md:pb-100 bg-primary_1 text-white">
           <div className="container">
-            <div className="inner flex justify-start xlg:justify-between items-start gap-20 lg:gap-40 flex-wrap xl:flex-nowrap">
+            <div className="inner flex justify-start xlg:justify-between items-start gap-20 xl:gap-40 flex-wrap xlg:flex-nowrap">
               {/* col1 */}
               {/* <div className='w-full sm:w-[calc(50%-20px)] md:w-[calc(33%-40px)] xlg:w-full'>
                 {footerlogo.url && ( // Only render if the URL exists
@@ -38,7 +35,7 @@ const Footer = ({ FooterData }) => {
                 )}
               </div> */}
               {/* col2 */}
-              <div className='foot-col1 flex flex-col gap-16 md:gap-32 w-full sm:w-[calc(50%-20px)] md:w-[calc(33%-40px)]  xlg:w-full'>
+              <div className='foot-col1 flex flex-col gap-16 md:gap-32 w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-40px)]  xlg:w-full'>
                 <span className="font-jakarta font-medium text-h4">Kontakt</span>
                 <ul className='md:space-y-8'>
                   {kontakt.address && (
@@ -49,9 +46,9 @@ const Footer = ({ FooterData }) => {
                       </div>
                     </li>
                   )}
-                  {kontakt.phone_url && (
+                  {kontakt.phone_urls && (
                     <li>
-                      <Link href={kontakt.phone_url} role='link' className="flex items-start gap-8">
+                      <Link href={`tel:${kontakt.phone.replace(/[\s()-]/g, '')}`}role='link' className="flex items-start gap-8">
                         <Image src="/images/phone.svg" alt="icon of phone" role="img" width={20} height={20} className='w-20 h-20' />
                         <span>{kontakt.phone}</span>
                       </Link>
@@ -66,7 +63,7 @@ const Footer = ({ FooterData }) => {
                     </li>
                   )}
                 </ul>
-                {/* <div className='flex gap-16 justify-start items-center'>
+                <div className='flex gap-16 justify-start items-center'>
                   {
                     social.map((item, i) => item.social_url ? ( // Check for URL again for the Link prop
                       <Link href={item.social_url} role="link" key={i}>
@@ -80,10 +77,10 @@ const Footer = ({ FooterData }) => {
                       </Link>
                     ) : null)
                   }
-                </div> */}
+                </div>
               </div>
               {/* col3 */}
-              <div className='flex flex-col gap-16 md:gap-32 w-full sm:w-[calc(50%-20px)] md:w-[calc(33%-40px)] xlg:w-full'>
+              <div className='flex flex-col gap-16 md:gap-32 w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-40px)] xlg:w-full'>
                 <span className="font-jakarta font-medium text-h4/snug">Öffnungszeiten</span>
                 <ul className="timings-list [&_li]:grid [&_li]:grid-cols-[120px_1fr] space-y-8 *:leading-snug">
                   {
@@ -97,7 +94,7 @@ const Footer = ({ FooterData }) => {
               </div>
               {/* col4 */}
 
-              <div className='flex flex-col gap-16 md:gap-32 w-full sm:w-[calc(50%-20px)] md:w-[calc(33%-40px)] xlg:w-full'>
+              <div className='flex flex-col gap-16 md:gap-32 w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-40px)] xlg:w-full'>
                 <span className="font-jakarta font-medium text-h4/snug">Navigation</span>
                 <ul className='space-y-8 *:leading-snug'>
                   {
@@ -118,7 +115,7 @@ const Footer = ({ FooterData }) => {
 
               </div>
               {/* col5 */}
-              <div className='flex flex-col gap-16 md:gap-32 w-full sm:w-[calc(33%-40px)] xlg:w-full'>
+              <div className='flex flex-col gap-16 md:gap-32 w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-40px)] xlg:w-full'>
                 <span className="font-jakarta font-medium text-h4/snug">Rechtliches </span>
                 <ul className='space-y-8 *:leading-snug'>
                   {
@@ -142,11 +139,14 @@ const Footer = ({ FooterData }) => {
             </div>
           </div>
         </div>
+        {
+          copyright ? 
         <div className='footer-btm bg-white'>
-          <div className='p-16 flex justify-center items-center text-center text-base'>
+          <div className='p-16 flex justify-center items-center text-center text-base text-primary'>
             <p>{copyright}</p>
           </div>
-        </div>
+        </div> : null
+        }
       </footer>
     </>
   )

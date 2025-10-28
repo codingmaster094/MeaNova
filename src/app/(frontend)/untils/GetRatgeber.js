@@ -3,7 +3,7 @@ export default async function GetPosts(params) {
     const response = await fetch(
       `${
         `${process.env.NEXT_RATGEBER_BASE_URL}/${params}` ||
-        `https://lift-konzept.vercel.app/api/${params}`
+        `https://www.meanova.de/api/${params}`
       }`,
       { next: { revalidate: 60 }}
     );

@@ -111,7 +111,7 @@ export const Footer: GlobalConfig = {
           },
         },
         {
-          name: 'phone_url',
+          name: 'phone_urls',
           type: 'text',
           label: {
             en: 'Phone URL',

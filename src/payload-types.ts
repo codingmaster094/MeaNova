@@ -340,7 +340,7 @@ export interface Footer {
     | null;
   kontakt?: {
     phone?: string | null;
-    phone_url?: string | null;
+    phone_urls?: string | null;
     email?: string | null;
     email_url?: string | null;
     address?: string | null;
@@ -652,6 +652,11 @@ export interface Home {
     Heading?: string | null;
     SubHeading?: string | null;
     FormHeading?: string | null;
+    DatenschutzerklarungLink?: {
+      label?: string | null;
+      url?: string | null;
+      target?: ('_self' | '_blank') | null;
+    };
   };
   seo?: {
     meta?: {
@@ -784,7 +789,7 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         phone?: T;
-        phone_url?: T;
+        phone_urls?: T;
         email?: T;
         email_url?: T;
         address?: T;
@@ -1012,6 +1017,13 @@ export interface HomeSelect<T extends boolean = true> {
         Heading?: T;
         SubHeading?: T;
         FormHeading?: T;
+        DatenschutzerklarungLink?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              target?: T;
+            };
       };
   seo?:
     | T

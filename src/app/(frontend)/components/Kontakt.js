@@ -4,14 +4,16 @@ import React from 'react'
 const Kontakt = ({
     Heading,
     SubHeading,
-    FormHeading
+    FormHeading,
+    DatenschutzerklarungLink
 }) => {
+    console.log('DatenschutzerklarungLink', DatenschutzerklarungLink)
     return (
         <>
             <section className='py-32 md:py-50 lg:py-80' id='kontakt'>
                 <div className="container">
                     <div className="inner flex justify-start items-start gap-32 xlg:gap-64 flex-col lg:flex-row">
-                        <div className='w-full lg:w-1/2 inset-0 relative lg:sticky lg:top-20'>
+                        <div className='w-full lg:w-1/2 inset-0 relative lg:sticky lg:top-140'>
                             <div className='space-y-16 relative lg:sticky lg:top-20'>
                                 <div className="title text-h2/snug font-jakarta font-normal">
                                     <h2>{Heading}</h2>
@@ -26,7 +28,7 @@ const Kontakt = ({
                             <form className="space-y-24" aria-label="Kontaktformular für Anfragen">
 
                                 <div>
-                                    <label for="role" className="block text-base_sm font-medium mb-8">Wer sind Sie? <span className="text-red-500">*</span></label>
+                                    <label htmlFor="role" className="block text-base_sm font-medium mb-8">Wer sind Sie? <span className="text-red-500">*</span></label>
                                     <select id="role"
                                         name="role"
                                         aria-required="true" className="w-full border border-body px-12 py-5 text-[#818181] focus:outline-none focus:ring-2 focus:ring-black">
@@ -38,14 +40,14 @@ const Kontakt = ({
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
                                     <div>
-                                        <label for="vorname" className="block text-base_sm font-normal mb-8">Vorname <span className="text-red-500">*</span></label>
+                                        <label htmlFor="vorname" className="block text-base_sm font-normal mb-8">Vorname <span className="text-red-500">*</span></label>
                                         <input type="text"
                                             id="vorname"
                                             name="vorname"
                                             aria-required="true" className="w-full border border-body  px-12 py-5 text-[#818181] focus:outline-none focus:ring-2 focus:ring-black" />
                                     </div>
                                     <div>
-                                        <label for="nachname" className="block text-base_sm font-normal mb-8">Nachname <span className="text-red-500">*</span></label>
+                                        <label htmlFor="nachname" className="block text-base_sm font-normal mb-8">Nachname <span className="text-red-500">*</span></label>
                                         <input type="text"
                                             id="nachname"
                                             name="nachname"
@@ -55,7 +57,7 @@ const Kontakt = ({
 
 
                                 <div>
-                                    <label or="email" className="block text-base_sm font-normal mb-8">E-Mail-Adresse <span className="text-red-500">*</span></label>
+                                    <label htmlFor="email" className="block text-base_sm font-normal mb-8">E-Mail-Adresse <span className="text-red-500">*</span></label>
                                     <input type="email"
                                         id="email"
                                         name="email"
@@ -64,7 +66,7 @@ const Kontakt = ({
 
 
                                 <div>
-                                    <label for="telefon" className="block text-base_sm font-normal mb-8">Telefon <span className="text-red-500">*</span></label>
+                                    <label htmlFor="telefon" className="block text-base_sm font-normal mb-8">Telefon <span className="text-red-500">*</span></label>
                                     <input type="tel"
                                         id="telefon"
                                         name="telefon"
@@ -74,7 +76,7 @@ const Kontakt = ({
 
 
                                 <div>
-                                    <label for="anliegen" className="block text-base_sm font-normal mb-8">Anliegen <span className="text-red-500">*</span></label>
+                                    <label htmlFor="anliegen" className="block text-base_sm font-normal mb-8">Anliegen <span className="text-red-500">*</span></label>
                                     <textarea id="anliegen"
                                         name="anliegen"
                                         rows="4"
@@ -96,15 +98,19 @@ const Kontakt = ({
                                     </div>
                                 </div>
 
-
                                 <p >
                                     {FormHeading}
-                                    <Link href="#" className="font-semibold text-black underline">Datenschutzerklärung</Link>.
+                                    {
+                                        DatenschutzerklarungLink != undefined && (
+                                            <Link href={DatenschutzerklarungLink.url} className="font-semibold text-black underline">{DatenschutzerklarungLink.label}</Link>
+                                        )
+                                    }
                                 </p>
 
 
+
                                 <button type="submit" className="!w-full btn-dark cursor-pointer" aria-label="Anfrage einreichen">
-                                    Anfrage Einreichen
+                                    Anfrage abschicken
                                 </button>
                             </form>
                         </div>

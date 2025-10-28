@@ -49,6 +49,7 @@ const OffCanvas = ({ logo, menus, isOpen, onClose }) => {
             menus.map((menu, index) => (
               <li key={index}>
                 <Link
+                onClick={onClose}
                   href={menu.link?.url || "/"}
                   aria-label={menu.link?.label || ""}
                   target={menu.link?.target || "_self"}

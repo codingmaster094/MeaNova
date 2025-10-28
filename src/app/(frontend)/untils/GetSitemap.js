@@ -3,7 +3,7 @@ export default async function GetSiteMap(params) {
     const response = await fetch(
       `${
         `${process.env.BASE_DOAMAIN}/${params}` ||
-        `https://lift-konzept.vercel.app/${params}`
+        `https://www.meanova.de/${params}`
       }`,
       {  next: { revalidate: 60 } }
     );
