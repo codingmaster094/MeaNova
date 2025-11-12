@@ -66,7 +66,7 @@ const Footer = ({ FooterData }) => {
                 <div className='flex gap-16 justify-start items-center'>
                   {
                     social.map((item, i) => item.social_url ? ( // Check for URL again for the Link prop
-                      <Link href={item.social_url} role="link" key={i}>
+                      <Link href={item.social_url} role="link" target="_blank" key={i}>
                         <Image
                           src={item.social_icon?.url || ''} // Use optional chaining for nested object
                           alt={`${item.social_icon?.title || 'social'} icon`}
