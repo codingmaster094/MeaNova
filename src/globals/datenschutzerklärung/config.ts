@@ -5,7 +5,7 @@ import { SEO } from '@/app/components/SEO/config'
 import { Content } from '@/app/components/guternburg/config'
 
 export const Datenschutzerklärung: GlobalConfig = {
-  slug: 'datenschutzerklarung',
+  slug: 'datenschutzerklaerung',
   label: {
     en: 'Privacy Policy',
     de: 'Datenschutzerklärung',
