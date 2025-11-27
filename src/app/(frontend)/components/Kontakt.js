@@ -10,7 +10,6 @@ const Kontakt = ({
   DatenschutzerklarungLink,
   // SubmitButton
 }) => {
-    console.log('SubmitButton', SubmitButton)
   const [form, setForm] = useState({
     role: 'Unternehmen',
     vorname: '',

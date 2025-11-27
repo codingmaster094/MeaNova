@@ -22,7 +22,6 @@ const page = async() => {
   if (!HomePageData) {
     return <div>No data available.</div>;
   }
-  console.log('HomePageData?.kontakt', HomePageData?.kontakt)
   return (
     <>
     <SEO_schema slug="home" faqs={HomePageData?.FaqSection?.FaqContent} />
