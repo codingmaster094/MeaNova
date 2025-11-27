@@ -22,6 +22,7 @@ const page = async() => {
   if (!HomePageData) {
     return <div>No data available.</div>;
   }
+  console.log('HomePageData?.kontakt', HomePageData?.kontakt)
   return (
     <>
     <SEO_schema slug="home" faqs={HomePageData?.FaqSection?.FaqContent} />
@@ -53,7 +54,7 @@ const page = async() => {
         Heading={HomePageData?.kontakt?.Heading}
         SubHeading={HomePageData?.kontakt?.SubHeading}
         FormHeading={HomePageData?.kontakt?.FormHeading}
-        // SubmitButton={HomePageData?.kontakt?.sumbimtedButtonLabel || "Anfrage abschicken"}
+        SubmitButton={HomePageData?.kontakt?.sumbimtedButtonLabel || "Anfrage abschicken"}
         DatenschutzerklarungLink={HomePageData?.kontakt?.DatenschutzerklarungLink}
       />
     </>

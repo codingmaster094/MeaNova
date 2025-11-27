@@ -8,8 +8,9 @@ const Kontakt = ({
   SubHeading,
   FormHeading,
   DatenschutzerklarungLink,
-  // SubmitButton
+  SubmitButton
 }) => {
+    console.log('SubmitButton', SubmitButton)
   const [form, setForm] = useState({
     role: 'Unternehmen',
     vorname: '',
@@ -216,10 +217,10 @@ File: ${file ? file.name : 'kein Upload, using developer file path'}
                   {message.text}
                 </div>
               )}
-{/* 
+
               <button type="submit" className="!w-full btn-dark cursor-pointer" aria-label={SubmitButton} disabled={loading}>
-                {loading ? 'Sende...' : {SubmitButton}}
-              </button> */}
+                {loading ? 'Sende...' : SubmitButton}
+              </button>
             </form>
           </div>
         </div>
