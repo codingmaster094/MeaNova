@@ -80,7 +80,7 @@ const Kontakt = ({
 
       // Build payload with select value and file info.
       const payload = {
-        to: process.env.NEXT_PUBLIC_CONTACT_RECIPIENT || process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@meanova.de',
+        to: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@meanova.de',
         subject: `Kontaktformular Anfrage von ${vorname} ${nachname}`,
         text: `
 Rolle: ${form.role}
