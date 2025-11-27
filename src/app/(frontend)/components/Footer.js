@@ -1,5 +1,8 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
+  import Lenis from "@studio-freight/lenis";
+import { useEffect, useRef } from "react";
 const Footer = ({ FooterData }) => {
   // Safely destructure data with default empty objects/arrays to ensure data paths exist
   const {
@@ -13,6 +16,40 @@ const Footer = ({ FooterData }) => {
   } = FooterData || {}; 
   const navMenus = navigation[0]?.menus ?? [];
 
+  const lenisRef = useRef(null);
+  
+    useEffect(() => {
+      const scroller = new Lenis({
+        duration: 1.2, // speed of scroll
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+  
+      function raf(time) {
+        scroller.raf(time);
+        requestAnimationFrame(raf);
+      }
+  
+      requestAnimationFrame(raf);
+      lenisRef.current = scroller;
+  
+      return () => {
+        scroller.destroy();
+      };
+    }, []);
+
+    const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetEl = document.querySelector(targetId);
+    if (targetEl && lenisRef.current) {
+      lenisRef.current.scrollTo(targetEl, {
+        offset: -80, // adjust for sticky header height
+        duration: 1.2,
+      });
+    }
+    setIsOpen(false); // close off-canvas if open
+  };
   return (
     <>
       <footer>
@@ -69,7 +106,7 @@ const Footer = ({ FooterData }) => {
                       <Link href={item.social_url} role="link" target="_blank" key={i}>
                         <Image
                           src={item.social_icon?.url || ''} // Use optional chaining for nested object
-                          alt={`${item.social_icon?.title || 'social'} icon`}
+                          alt={`${item.social_icon?.alt || 'social'} icon`}
                           role="img"
                           width={item.social_icon?.width || 24} // Provide a default width/height
                           height={item.social_icon?.height || 24}
@@ -102,7 +139,7 @@ const Footer = ({ FooterData }) => {
                       if (item.url) {
                         return (
                           <li key={i}>
-                            <Link href={item.url} role='link'>
+                            <Link href={item.url} role='link' onClick={(e) => handleSmoothScroll(e, item.url)}>
                               {item.label}
                             </Link>
                           </li>

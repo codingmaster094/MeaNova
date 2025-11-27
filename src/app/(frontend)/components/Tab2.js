@@ -43,8 +43,7 @@ const Tab2 = ({ data }) => {
         offset: -80, // adjust for sticky header height
         duration: 1.2,
       });
-    }
-    setIsOpen(false); // close off-canvas if open
+    }// close off-canvas if open
   };
   useEffect(() => {
     const equalizeHeights = () => {
@@ -157,9 +156,38 @@ const Tab2 = ({ data }) => {
                                       <h3 className="font-normal font-jakarta text-h3/snug mb-24 js-title">
                                         {item.Heading}
                                       </h3>
-                                      <p className="text-base txt-body js-content">
-                                        {item.richText?.root?.children?.[0]?.children?.[0]?.text || ""}
-                                      </p>
+                                      {item.richText?.root?.children &&
+                                        item.richText?.root?.children.map((block, index) => {
+                                            if (block.type === "list") {
+                                                return (
+                                                    <ul key={index} className="leading-snug pl-24 [&_li]:list-disc space-y-16">
+                                                        {block.children.map((item, i) => (
+                                                            <li key={i}>
+                                                                {item.children[0].text}
+                                                            </li>
+                                                        ))}
+                                                    </ul>   
+                                                );
+                                            } else if (block.type === "paragraph") {
+                                                return (
+
+                                                    <p key={index} className="text-base txt-body js-content">
+                                                        {block.children.map((child) => child.text).join(" ")}
+                                                    </p>
+
+                                                );
+                                            } else if (block.type === "heading") {
+                                                return (
+                                                    <h3
+                                                        key={index}
+                                                        className="text-h3 font-medium text-center px-16"
+                                                        dangerouslySetInnerHTML={{ __html: block.children.map((child) => child.text).join(" ") }}
+                                                    ></h3>
+                                                );
+                                            } else {
+                                                return null;
+                                            }
+                                        })}
                                     </div>
                                   </div>
                                   <div className="box w-100 h-100 bg-white flex justify-center items-center ml-auto -mr-32 -mb-32">
@@ -181,7 +209,38 @@ const Tab2 = ({ data }) => {
                               <div key={idx} className="flex flex-col items-center gap-24">
                                 <h2 className="text-h2/snug text-center">{cta.CTAHeading}</h2>
                                 <div className="line max-w-225 w-full border-1 border-solid border-grey1"></div>
-                                <p>{cta.richText?.root?.children?.[0]?.children?.[0]?.text || ""}</p>
+                                {cta.richText?.root?.children &&
+                                        cta.richText?.root?.children.map((block, index) => {
+                                            if (block.type === "list") {
+                                                return (
+                                                    <ul key={index} className="leading-snug pl-24 [&_li]:list-disc space-y-16">
+                                                        {block.children.map((item, i) => (
+                                                            <li key={i}>
+                                                                {item.children[0].text}
+                                                            </li>
+                                                        ))}
+                                                    </ul>   
+                                                );
+                                            } else if (block.type === "paragraph") {
+                                                return (
+
+                                                    <p key={index}>
+                                                        {block.children.map((child) => child.text).join(" ")}
+                                                    </p>
+
+                                                );
+                                            } else if (block.type === "heading") {
+                                                return (
+                                                    <h3
+                                                        key={index}
+                                                        className="text-h3 font-medium text-center px-16"
+                                                        dangerouslySetInnerHTML={{ __html: block.children.map((child) => child.text).join(" ") }}
+                                                    ></h3>
+                                                );
+                                            } else {
+                                                return null;
+                                            }
+                                        })}
                                 {cta.CTA_link && (
                                   <Link
                                     href={cta.CTA_link.url}

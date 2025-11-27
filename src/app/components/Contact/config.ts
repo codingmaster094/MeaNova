@@ -29,7 +29,7 @@ export const Contact: Field = {
       type: 'text',
       label: {
         en: 'Form Heading',
-        de: '',
+        de: 'Formularüberschrift',
       },
     },
     {
@@ -71,5 +71,13 @@ export const Contact: Field = {
         },
       ],
     },
+    {
+      name: 'sumbimtedButtonLabel',
+      type: 'text',
+      label: {
+        en: 'Submitted Button Label',
+        de: 'Abgesendete Schaltflächenbeschriftung',
+      },  
+    }
   ],
 }

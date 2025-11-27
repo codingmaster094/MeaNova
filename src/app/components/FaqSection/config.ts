@@ -33,14 +33,6 @@ export const FaqSection: Field = {
       },
     },
     {
-      name: 'SubHeading',
-      type: 'text',
-      label: {
-        en: 'Sub Heading',
-        de: 'Unterüberschrift',
-      },
-    },
-    {
       name: 'FaqContent',
       type: 'array',
       label: {

@@ -34,14 +34,6 @@ export const Personalvermittlung: Field = {
       },
     },
     {
-      name: 'SubHeading',
-      type: 'text',
-      label: {
-        en: 'Sub Heading',
-        de: 'Unterüberschrift',
-      },
-    },
-    {
       name: 'description',
       type: 'richText',
       label: {

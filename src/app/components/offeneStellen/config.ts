@@ -52,48 +52,6 @@ export const OffeneStellen: Field = {
       }),
     },
     {
-      name: 'point_heading',
-      type: 'text',
-      label: {
-        en: 'Points Heading',
-        de: '',
-      },
-    },
-    {
-      name: 'points',
-      type: 'richText',
-      label: {
-        en: 'Points',
-        de: '',
-      },
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(),
-        ],
-      }),
-    },
-    {
-      name: 'Subdescription',
-      type: 'richText',
-      label: {
-        en: 'Sub Description',
-        de: '',
-      },
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-          EXPERIMENTAL_TableFeature(),
-        ],
-      }),
-    },
-    {
       name: 'offeneStellen_link',
       type: 'group',
       label: {

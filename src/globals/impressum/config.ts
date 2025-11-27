@@ -2,6 +2,7 @@ import type { GlobalConfig } from 'payload'
 import slugify from 'slugify'
 import { revalidateImpressum } from './hooks/revalidateImpressum'
 import { SEO } from '@/app/components/SEO/config'
+import { Content } from '@/app/components/guternburg/config'
 
 export const Impressum: GlobalConfig = {
   slug: 'impressum',
@@ -70,6 +71,13 @@ export const Impressum: GlobalConfig = {
     {
       type: 'tabs',
       tabs: [
+        {
+                  label: {
+                    en: 'Content',
+                    de: 'Inhalt',
+                  },
+                  fields: [Content],
+                },
         {
                   label: {
                     en: 'SEO',

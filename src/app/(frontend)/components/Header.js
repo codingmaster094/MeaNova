@@ -54,7 +54,7 @@ const Header = ({ HeaderData, MenusData }) => {
               <Image
                 className="w-100 xl:w-135"
                 src={HeaderData.Header_Logo.url}
-                alt="Firmenlogo von Company Name"
+                alt={HeaderData.Header_Logo.alt}
                 role="img"
                 width={200}
                 height={60}
