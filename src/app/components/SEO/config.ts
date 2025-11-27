@@ -74,7 +74,7 @@ export const SEO: Field = {
           label: 'Canonical URL',
           type: 'text',
           hooks: {
-            beforeChange: [async ({ value }) => value || process.env.BASE_DOMAIN],
+            beforeChange: [async ({ value }) => value || process.env.BASE_DOAMAIN],
           },
         },
         PreviewField({ hasGenerateFn: true }),

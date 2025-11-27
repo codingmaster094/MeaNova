@@ -90,7 +90,7 @@ export interface Config {
     menus: Menu;
     home: Home;
     impressum: Impressum;
-    datenschutzerklarung: Datenschutzerklarung;
+    datenschutzerklaerung: Datenschutzerklaerung;
     robots: Robot;
   };
   globalsSelect: {
@@ -99,7 +99,7 @@ export interface Config {
     menus: MenusSelect<false> | MenusSelect<true>;
     home: HomeSelect<false> | HomeSelect<true>;
     impressum: ImpressumSelect<false> | ImpressumSelect<true>;
-    datenschutzerklarung: DatenschutzerklarungSelect<false> | DatenschutzerklarungSelect<true>;
+    datenschutzerklaerung: DatenschutzerklaerungSelect<false> | DatenschutzerklaerungSelect<true>;
     robots: RobotsSelect<false> | RobotsSelect<true>;
   };
   locale: null;
@@ -634,8 +634,8 @@ export interface Impressum {
   id: string;
   title?: string | null;
   slug: string;
-  content?: {
-    richText?: {
+  contents?: {
+    Gutenberg?: {
       root: {
         type: string;
         children: {
@@ -650,6 +650,10 @@ export interface Impressum {
       };
       [k: string]: unknown;
     } | null;
+    Gutenberg_html?: string | null;
+    Featured_image?: (string | null) | Media;
+    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
+    media?: (string | null) | Media;
   };
   seo?: {
     meta?: {
@@ -674,14 +678,14 @@ export interface Impressum {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "datenschutzerklarung".
+ * via the `definition` "datenschutzerklaerung".
  */
-export interface Datenschutzerklarung {
+export interface Datenschutzerklaerung {
   id: string;
   title?: string | null;
   slug: string;
-  content?: {
-    richText?: {
+  contents?: {
+    Gutenberg?: {
       root: {
         type: string;
         children: {
@@ -696,6 +700,10 @@ export interface Datenschutzerklarung {
       };
       [k: string]: unknown;
     } | null;
+    Gutenberg_html?: string | null;
+    Featured_image?: (string | null) | Media;
+    type?: ('none' | 'highImpact' | 'mediumImpact' | 'lowImpact') | null;
+    media?: (string | null) | Media;
   };
   seo?: {
     meta?: {
@@ -1004,10 +1012,14 @@ export interface HomeSelect<T extends boolean = true> {
 export interface ImpressumSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  content?:
+  contents?:
     | T
     | {
-        richText?: T;
+        Gutenberg?: T;
+        Gutenberg_html?: T;
+        Featured_image?: T;
+        type?: T;
+        media?: T;
       };
   seo?:
     | T
@@ -1031,15 +1043,19 @@ export interface ImpressumSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "datenschutzerklarung_select".
+ * via the `definition` "datenschutzerklaerung_select".
  */
-export interface DatenschutzerklarungSelect<T extends boolean = true> {
+export interface DatenschutzerklaerungSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  content?:
+  contents?:
     | T
     | {
-        richText?: T;
+        Gutenberg?: T;
+        Gutenberg_html?: T;
+        Featured_image?: T;
+        type?: T;
+        media?: T;
       };
   seo?:
     | T
