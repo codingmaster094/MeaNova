@@ -15,6 +15,7 @@ import { HomePage } from './globals/home/config'
 import { Impressum } from './globals/impressum/config'
 import { Datenschutzerklärung } from './globals/datenschutzerklärung/config'
 import { Robots } from './globals/robots/config'
+import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,7 +32,7 @@ export default buildConfig({
   'https://www.meanova.de',
   'http://localhost:3000'
 ],
-  collections: [Users, Media],
+  collections: [Users, Media , Pages],
   globals: [
     Header,
     Footer,
