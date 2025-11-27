@@ -7,8 +7,8 @@ import { Content } from '@/app/components/guternburg/config'
 export const Impressum: GlobalConfig = {
   slug: 'impressum',
   label: {
-    en: 'Impressum',
-    de: '',
+    en: 'Imprint',
+    de: 'Impressum',
   },
   access: {
     read: () => true,

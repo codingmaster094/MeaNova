@@ -7,8 +7,8 @@ import { Content } from '@/app/components/guternburg/config'
 export const Datenschutzerklärung: GlobalConfig = {
   slug: 'datenschutzerklarung',
   label: {
-    en: 'Datenschutzerklärung',
-    de: '',
+    en: 'Privacy Policy',
+    de: 'Datenschutzerklärung',
   },
   access: {
     read: () => true,
