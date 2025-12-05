@@ -204,6 +204,12 @@ File: ${file ? file.name : 'kein Upload, using developer file path'}
                   <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" onChange={handleFileChange} />
                 </div>
               </div>
+              {file && (
+                <div className="mt-4 text-left">
+                  <p className="text-sm text-gray-600">Ausgewählte Datei:</p>
+                  <p className="font-medium text-black">{file.name}</p>
+                </div>
+              )}
               
               <p>
                 {FormHeading}
