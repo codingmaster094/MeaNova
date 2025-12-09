@@ -19,7 +19,7 @@ const Kontakt = ({
     telefon: '',
     anliegen: '',
   })
-  const [file, setFile] = useState(null) // File object
+  const [files, setFiles] = useState([]) // Array of File objects
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState(null)
 
@@ -32,8 +32,23 @@ const Kontakt = ({
   }
 
   function handleFileChange(e) {
-    const f = e.target.files?.[0] ?? null
-    setFile(f)
+    const selectedFiles = Array.from(e.target.files || [])
+    if (selectedFiles.length > 5) {
+      alert('Bitte maximal 5 Dateien auswählen.')
+      // Keep existing files or clear? Let's just take the first 5 for now or do nothing
+      // Better UX: just slice the first 5
+      setFiles(selectedFiles.slice(0, 5))
+    } else {
+      // Check total size
+      const totalSize = selectedFiles.reduce((acc, file) => acc + file.size, 0)
+      if (totalSize > 15 * 1024 * 1024) { // 15MB limit
+        alert('Die Gesamtgröße der Dateien darf 15 MB nicht überschreiten.')
+        setFiles([])
+        e.target.value = '' // Reset input
+      } else {
+        setFiles(selectedFiles)
+      }
+    }
   }
 
   // convert file to base64 string (without data:... prefix)
@@ -73,9 +88,11 @@ const Kontakt = ({
     setLoading(true)
     try {
       const attachments = []
-      if (file) {
-        const base64 = await fileToBase64(file)
-        attachments.push({ filename: file.name, content: base64 })
+      if (files && files.length > 0) {
+        for (const f of files) {
+          const base64 = await fileToBase64(f)
+          attachments.push({ filename: f.name, content: base64 })
+        }
       }
 
       // Build payload with select value and file info.
@@ -90,7 +107,7 @@ Telefon: ${telefon}
 
 Anliegen:
 ${anliegen}
-File: ${file ? file.name : 'kein Upload, using developer file path'}
+File(s): ${files.length > 0 ? files.map(f => f.name).join(', ') : 'kein Upload, using developer file path'}
         `,
         html: `
           <h2>Neue Anfrage von der Website</h2>
@@ -99,7 +116,7 @@ File: ${file ? file.name : 'kein Upload, using developer file path'}
           <p><strong>E-Mail:</strong> ${email}</p>
           <p><strong>Telefon:</strong> ${telefon}</p>
           <p><strong>Anliegen:</strong><br/>${anliegen.replace(/\n/g, '<br/>')}</p>
-          <p><strong>Datei:</strong> ${file ? file.name : DEV_FILE_PATH}</p>
+          <p><strong>Datei(en):</strong> ${files.length > 0 ? files.map(f => f.name).join(', ') : DEV_FILE_PATH}</p>
         `,
         attachments,          // base64 attachments only if user uploaded
         // Always include the developer-provided local path as `fileUrl`.
@@ -119,7 +136,7 @@ File: ${file ? file.name : 'kein Upload, using developer file path'}
 
       setMessage({ type: 'success', text: 'Anfrage wurde erfolgreich versendet. Danke!' })
       setForm({ role: 'Unternehmen', vorname: '', nachname: '', email: '', telefon: '', anliegen: '' })
-      setFile(null)
+      setFiles([])
     } catch (err) {
       console.error(err)
       setMessage({ type: 'error', text: 'Beim Senden ist ein Fehler aufgetreten. Bitte später erneut versuchen.' })
@@ -200,14 +217,18 @@ File: ${file ? file.name : 'kein Upload, using developer file path'}
                       </g>
                     </svg>
                   </div>
-                  <span className="block text-base_sm font-normal mb-8 text-dark">Bitte laden Sie Ihren Lebenslauf oder andere Dokumente hoch.</span>
-                  <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" onChange={handleFileChange} />
+                  <span className="block text-base_sm font-normal mb-8 text-dark">Bitte laden Sie Ihren Lebenslauf oder andere Dokumente hoch (Max. 5, max. 15MB).</span>
+                  <input type="file" multiple className="absolute inset-0 opacity-0 cursor-pointer" onChange={handleFileChange} />
                 </div>
               </div>
-              {file && (
+              {files.length > 0 && (
                 <div className="mt-4 text-left">
-                  <p className="text-sm text-gray-600">Ausgewählte Datei:</p>
-                  <p className="font-medium text-black">{file.name}</p>
+                  <p className="text-sm text-gray-600">Ausgewählte Dateien:</p>
+                  <ul className="list-disc pl-5">
+                    {files.map((f, i) => (
+                      <li key={i} className="font-medium text-black">{f.name}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
               

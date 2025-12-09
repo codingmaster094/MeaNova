@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-const MAX_PAYLOAD_BYTES = 5 * 1024 * 1024 
+const MAX_PAYLOAD_BYTES = 20 * 1024 * 1024 
 
 export async function POST(request) {
   try {
