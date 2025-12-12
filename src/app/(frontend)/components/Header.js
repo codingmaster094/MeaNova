@@ -34,6 +34,7 @@ const Header = ({ HeaderData, MenusData }) => {
 
   // ✅ Smooth scroll handler for internal section links
   const handleSmoothScroll = (e, targetId) => {
+    if (pathname !== "/") return;
     e.preventDefault();
     const targetEl = document.querySelector(targetId);
     if (targetEl && lenisRef.current) {
@@ -80,7 +81,7 @@ const Header = ({ HeaderData, MenusData }) => {
                     <li key={index}>
                       {isAnchor ? (
                         <a
-                          href={menuUrl}
+                          href={pathname !== "/" ? `/${menuUrl}` : menuUrl}
                           onClick={(e) => handleSmoothScroll(e, menuUrl)}
                           className={`${
                             isActive ? "active" : "text-primary"
@@ -109,7 +110,11 @@ const Header = ({ HeaderData, MenusData }) => {
 
             <div className="flex justify-end items-center gap-16 md:gap-24">
               <Link
-                href={HeaderData.link.url}
+                href={
+                  pathname !== "/" && HeaderData.link.url.startsWith("#")
+                    ? `/${HeaderData.link.url}`
+                    : HeaderData.link.url
+                }
                 onClick={(e) => handleSmoothScroll(e, HeaderData.link.url)}
                 target={HeaderData.link.target}
                 aria-label="Kontaktieren Sie uns – Startseite"
@@ -161,6 +166,7 @@ const Header = ({ HeaderData, MenusData }) => {
         menus={MenusData.menus}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        pathname={pathname}
       />
     </>
   );

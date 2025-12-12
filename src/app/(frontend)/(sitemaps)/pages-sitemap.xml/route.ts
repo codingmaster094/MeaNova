@@ -26,11 +26,11 @@ const getPagesSitemap = unstable_cache(
 
     const sitemap = results.docs
       ? results.docs
-          .filter((page: any) => Boolean(page?.slug))
-          .map((page: any) => ({
-            loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
-            lastmod: page.updatedAt || dateFallback,
-          }))
+        .filter((page: { slug?: string | null; updatedAt?: string }) => Boolean(page?.slug))
+        .map((page: { slug?: string | null; updatedAt?: string }) => ({
+          loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
+          lastmod: page.updatedAt || dateFallback,
+        }))
       : []
 
     return [...sitemap]

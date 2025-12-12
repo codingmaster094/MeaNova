@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
-const OffCanvas = ({ logo, menus, isOpen, onClose }) => {
+const OffCanvas = ({ logo, menus, isOpen, onClose, pathname }) => {
+
+
   return (
     <div
       id="mobile-curtain"
@@ -17,7 +19,7 @@ const OffCanvas = ({ logo, menus, isOpen, onClose }) => {
         role="navigation"
         aria-label="Hauptmenü"
       >
-        <Link href="#" aria-roledescription='link'>
+        <Link href="/" aria-roledescription='link'>
           <Image
             className="w-100 xl:w-135"
             src={logo}
@@ -46,19 +48,26 @@ const OffCanvas = ({ logo, menus, isOpen, onClose }) => {
 
         <ul className="flex flex-col text-left text-primary [&_li]:w-full [&_li]:text-center [&_li]:px-12 [&_li]:text-h3 sm:[&_li]:text-h2 [&_li]:!font-medium [&_li]:py-10 md:[&_li]:py-24 [&_li>a]:text-primary [&_li:not(:last-child)]:border-b-[1px] [&_li:not(:last-child)]:border-b-solid [&_li:not(:last-child)]:border-b-primary mt-40">
           {menus &&
-            menus.map((menu, index) => (
-              <li key={index}>
-                <Link
-                onClick={onClose}
-                  href={menu.link?.url || "/"}
-                  aria-label={menu.link?.label || ""}
-                  target={menu.link?.target || "_self"}
-                  role="link">
-                  {menu.link?.label}
-                </Link>
-              </li>
-            ))
-          }
+            menus.map((menu, index) => {
+              const menuUrl = menu.link?.url || "/";
+              return (
+                <li key={index}>
+                  <Link
+                    onClick={onClose}
+                    href={
+                      pathname !== "/" && menuUrl.startsWith("#")
+                        ? `/${menuUrl}`
+                        : menuUrl
+                    }
+                    aria-label={menu.link?.label || ""}
+                    target={menu.link?.target || "_self"}
+                    role="link"
+                  >
+                    {menu.link?.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
       </nav>
     </div>

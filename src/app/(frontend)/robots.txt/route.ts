@@ -28,7 +28,7 @@ export async function GET(): Promise<Response> {
 
       const robotsRaw =
         rawJson && typeof rawJson === 'object'
-          ? (rawJson as Record<string, any>).data?.robots
+          ? (rawJson as { data?: { robots?: string } }).data?.robots
           : undefined;
 
       if (typeof robotsRaw === 'string' && robotsRaw.trim().length > 0) {
