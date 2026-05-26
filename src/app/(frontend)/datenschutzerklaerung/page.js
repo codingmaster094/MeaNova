@@ -189,6 +189,11 @@ const page = () => {
             kaufmännischer Relevanz bis zu 6 bzw. 10 Jahre (Art. 6 Abs. 1 lit. c
             DSGVO i. V. m. HGB/AO).
           </p>
+          <p>Ergänzend kann die Kommunikation – sofern gewünscht und vom Nutzer initiiert – auch über Messenger-Dienste (z. B. WhatsApp) erfolgen.</p>
+          <p>In diesem Fall verarbeiten wir zusätzlich die Telefonnummer, Kommunikationsinhalte sowie Meta-Daten (z. B. Zeitpunkte der Kommunikation) zur Bearbeitung der Anfrage bzw. im Rahmen vorvertraglicher/vertraglicher Maßnahmen.</p>
+          <p>Dabei können Dienstleister aus dem Bereich der Kommunikationsdienste eingesetzt werden (z. B. WhatsApp Ireland Limited).</p>
+          <p>Eine Übermittlung personenbezogener Daten in Drittländer (insbesondere in die USA) kann dabei nicht ausgeschlossen werden. Die Absicherung erfolgt – soweit möglich – über geeignete Garantien im Sinne der Art. 44 ff. DSGVO (z. B. Standardvertragsklauseln).</p>
+          <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
         </div>
 
         <div className="section">
