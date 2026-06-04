@@ -197,7 +197,72 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>7. Bereitstellung der Website &amp; Logfiles</h2>
+          <h2>7. Bewerber-, Kandidaten- und Recruitingprozess</h2>
+          <p>
+            Im Rahmen unserer Tätigkeit als Personalberatung und Recruiting-Dienstleister verarbeiten wir personenbezogene Daten von Bewerberinnen, Bewerbern, Kandidatinnen und Kandidaten.
+          </p>
+          <p>Hierzu können insbesondere gehören:</p>
+          <ul>
+            <li>Stammdaten (z. B. Name, Kontaktdaten, Wohnort)</li>
+            <li>Bewerbungsunterlagen (z. B. Lebenslauf, Zeugnisse, Qualifikationen)</li>
+            <li>berufliche Informationen (z. B. Gehaltsvorstellungen, Verfügbarkeit, Projekterfahrungen)</li>
+            <li>Kommunikationsdaten aus Telefonaten, E-Mails, Videokonferenzen oder Messenger-Diensten</li>
+            <li>Gesprächsnotizen und Informationen aus dem Recruitingprozess</li>
+          </ul>
+          <p>
+            Die Verarbeitung erfolgt ausschließlich zum Zweck der Durchführung von Recruiting-, Personalvermittlungs- und Besetzungsprozessen sowie zur Kontaktaufnahme im Rahmen beruflicher Möglichkeiten.
+          </p>
+          <p>Rechtsgrundlagen der Verarbeitung sind insbesondere:</p>
+          <ul>
+            <li>Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen)</li>
+            <li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Durchführung von Recruiting- und Vermittlungsprozessen)</li>
+            <li>sowie ggf. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</li>
+          </ul>
+          <p>
+            Im Regelfall erfolgt eine erste Kandidatenvorstellung gegenüber potenziellen Kundenunternehmen zunächst anonymisiert oder teil-anonymisiert. Eine offene Weitergabe personenbezogener Daten an Kundenunternehmen erfolgt grundsätzlich erst nach vorheriger Abstimmung mit der betroffenen Person.
+          </p>
+          <p>
+            Personenbezogene Daten werden nur an solche Unternehmen oder Ansprechpartner weitergegeben, die unmittelbar in einen konkreten Recruiting- oder Besetzungsprozess eingebunden sind.
+          </p>
+          <p>
+            Zur Verwaltung von Kandidaten-, Kunden- und Prozessdaten nutzen wir interne Systeme, CRM-Lösungen und unterstützende Dienstleister. Der Zugriff erfolgt ausschließlich im erforderlichen Umfang nach dem Need-to-know-Prinzip.
+          </p>
+          <p>
+            Personenbezogene Daten werden grundsätzlich nur so lange gespeichert, wie dies für die Durchführung von Recruiting-, Vermittlungs- oder Kommunikationsprozessen erforderlich ist oder berechtigte Interessen an einer weiteren Speicherung bestehen. Betroffene Personen können jederzeit der weiteren Verarbeitung widersprechen oder die Löschung ihrer Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+          </p>
+        </div>
+
+        <div className="section">
+          <h2>8. Einsatz digitaler Assistenzsysteme und KI-gestützter Tools</h2>
+          <p>
+            Zur Unterstützung interner Arbeits-, Kommunikations- und Organisationsprozesse können digitale Assistenzsysteme sowie KI-gestützte Anwendungen eingesetzt werden.
+          </p>
+          <p>Dies betrifft insbesondere:</p>
+          <ul>
+            <li>Formulierungs- und Strukturierungshilfen</li>
+            <li>Erstellung und Optimierung von Texten</li>
+            <li>Recherchezwecke</li>
+            <li>Analysen</li>
+            <li>Unterstützung bei organisatorischen Abläufen</li>
+            <li>Auswertung und Aufbereitung von Informationen</li>
+            <li>interne Dokumentations- und Kommunikationsprozesse</li>
+          </ul>
+          <p>
+            Dabei erfolgt der Einsatz ausschließlich unterstützend und nicht zur automatisierten Entscheidungsfindung im Sinne des Art. 22 DSGVO.
+          </p>
+          <p>
+            Eine vollautomatisierte Bewertung oder Auswahl von Kandidatinnen oder Kandidaten findet nicht statt. Sämtliche Entscheidungen innerhalb des Recruiting- und Vermittlungsprozesses erfolgen durch natürliche Personen.
+          </p>
+          <p>
+            Die Verarbeitung personenbezogener Daten erfolgt dabei nur im erforderlichen Umfang und unter Beachtung der geltenden datenschutzrechtlichen Vorgaben.
+          </p>
+          <p>
+            Sofern externe Dienstleister oder cloudbasierte Systeme eingesetzt werden, erfolgt dies ausschließlich auf Grundlage geeigneter datenschutzrechtlicher Vereinbarungen und – soweit erforderlich – geeigneter Garantien gemäß Art. 44 ff. DSGVO.
+          </p>
+        </div>
+
+        <div className="section">
+          <h2>9. Bereitstellung der Website &amp; Logfiles</h2>
           <p>
             Die Verarbeitung der in <strong>Abschnitt 3</strong> beschriebenen
             Protokolldaten ist für die Auslieferung der Website technisch
@@ -211,7 +276,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>8. Empfänger von Daten / Kategorien von Empfängern</h2>
+          <h2>10. Empfänger von Daten / Kategorien von Empfängern</h2>
           <ul>
             <li>
               <strong>Auftragsverarbeiter:</strong> Vercel (Hosting/CDN), ggf.
@@ -229,7 +294,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>9. Drittlandübermittlungen</h2>
+          <h2>11. Drittlandübermittlungen</h2>
           <p>
             Soweit Dienste von Anbietern mit Sitz außerhalb der EU/des EWR eingesetzt
             werden oder Support/Administration durch Unternehmen in Drittstaaten
@@ -242,7 +307,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>10. Speicherdauer</h2>
+          <h2>12. Speicherdauer</h2>
           <p>
             Sofern in dieser Erklärung nicht abweichend angegeben, löschen bzw.
             anonymisieren wir personenbezogene Daten, sobald der jeweilige Zweck
@@ -253,7 +318,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>11. Pflicht zur Bereitstellung von Daten</h2>
+          <h2>13. Pflicht zur Bereitstellung von Daten</h2>
           <p>
             Die Bereitstellung von Nutzungsdaten bei rein informatorischer Nutzung
             ist technisch erforderlich. Bei Nichtbereitstellung kann die Website
@@ -262,7 +327,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>12. Sicherheit der Verarbeitung</h2>
+          <h2>14. Sicherheit der Verarbeitung</h2>
           <p>
             Wir verwenden aktuelle <strong>TLS-Verschlüsselung</strong> (HTTPS) und
             angemessene technische und organisatorische Maßnahmen (TOM), um
@@ -272,7 +337,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>13. Minderjährige</h2>
+          <h2>15. Minderjährige</h2>
           <p>
             Unser Angebot richtet sich nicht an Kinder im Sinne von Art. 8 DSGVO.
             Sofern wir Kenntnis von der Verarbeitung personenbezogener Daten von
@@ -282,7 +347,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>14. Keine automatisierte Entscheidungsfindung</h2>
+          <h2>16. Keine automatisierte Entscheidungsfindung</h2>
           <p>
             Es findet <strong>keine</strong> automatisierte Entscheidungsfindung
             einschließlich Profiling i. S. v. Art. 22 DSGVO statt.
@@ -290,7 +355,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>15. Rechte der betroffenen Personen</h2>
+          <h2>17. Rechte der betroffenen Personen</h2>
           <p>Sie haben nach Maßgabe der gesetzlichen Voraussetzungen das Recht auf:</p>
           <ul>
             <li><strong>Auskunft</strong> (Art. 15 DSGVO),</li>
@@ -315,7 +380,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>16. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+          <h2>18. Beschwerderecht bei einer Aufsichtsbehörde</h2>
           <p>
             Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu
             beschweren (Art. 77 DSGVO). Für Bayern (Sitz unseres Unternehmens)
@@ -331,7 +396,7 @@ const page = () => {
         </div>
 
         <div className="section">
-          <h2>17. Änderungen dieser Datenschutzerklärung</h2>
+          <h2>19. Änderungen dieser Datenschutzerklärung</h2>
           <p>
             Wir passen diese Datenschutzerklärung an, wenn dies aufgrund technischer
             Änderungen, rechtlicher Vorgaben oder der Erweiterung unserer Dienste
