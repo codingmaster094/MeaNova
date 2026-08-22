@@ -1,203 +1,138 @@
-import {
-  EXPERIMENTAL_TableFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
 import { Field } from 'payload'
+
+const cardFields: Field[] = [
+  {
+    name: 'icon',
+    type: 'upload',
+    relationTo: 'media',
+    required: false,
+    label: { en: 'Icon', de: 'Icon' },
+  },
+  {
+    name: 'heading',
+    type: 'text',
+    required: false,
+    label: { en: 'Title', de: 'Titel' },
+  },
+  {
+    name: 'text',
+    type: 'textarea',
+    required: false,
+    label: { en: 'Description', de: 'Beschreibung' },
+  },
+]
+
+const audienceTabFields: Field[] = [
+  {
+    name: 'tabLabel',
+    type: 'text',
+    required: true,
+    label: { en: 'Tab button', de: 'Tab-Button' },
+    admin: {
+      description: 'Shown as the clickable tab (e.g. Unternehmen or Kandidat:innen).',
+    },
+  },
+  {
+    name: 'topHeading',
+    type: 'text',
+    label: { en: 'Top slider heading', de: 'Obere Slider-Überschrift' },
+  },
+  {
+    name: 'topCards',
+    type: 'array',
+    labels: { singular: { en: 'Card', de: 'Karte' }, plural: { en: 'Cards', de: 'Karten' } },
+    label: { en: 'Top cards', de: 'Obere Karten' },
+    fields: cardFields,
+  },
+  {
+    type: 'collapsible',
+    label: { en: 'Middle CTA', de: 'Mittlerer CTA' },
+    fields: [
+      {
+        name: 'ctaHeading',
+        type: 'text',
+        label: { en: 'CTA heading', de: 'CTA-Überschrift' },
+      },
+      {
+        name: 'ctaText',
+        type: 'textarea',
+        label: { en: 'CTA text', de: 'CTA-Text' },
+      },
+      {
+        name: 'ctaLink',
+        type: 'group',
+        label: { en: 'CTA button', de: 'CTA-Button' },
+        fields: [
+          {
+            name: 'label',
+            type: 'text',
+            label: { en: 'Label', de: 'Beschriftung' },
+          },
+          {
+            name: 'url',
+            type: 'text',
+            label: { en: 'URL', de: 'URL' },
+            admin: { description: 'e.g. #kontakt or /#kontakt' },
+          },
+          {
+            name: 'target',
+            type: 'select',
+            defaultValue: '_self',
+            options: [
+              { label: { en: 'Same tab', de: 'Gleiches Tab' }, value: '_self' },
+              { label: { en: 'New tab', de: 'Neues Tab' }, value: '_blank' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'bottomHeading',
+    type: 'text',
+    label: { en: 'Bottom slider heading', de: 'Untere Slider-Überschrift' },
+  },
+  {
+    name: 'bottomCards',
+    type: 'array',
+    labels: { singular: { en: 'Card', de: 'Karte' }, plural: { en: 'Cards', de: 'Karten' } },
+    label: { en: 'Bottom cards', de: 'Untere Karten' },
+    fields: cardFields,
+  },
+]
 
 export const Unternehmen: Field = {
   name: 'unternehmen',
   type: 'group',
   label: {
-    en: '',
-    de: '',
+    en: 'Companies & candidates',
+    de: 'Unternehmen & Kandidat:innen',
   },
   fields: [
     {
-      name: 'link_title',
-      label: { en: 'link-title', de: '' },
-      type: 'array',
-      fields: [
+      type: 'tabs',
+      tabs: [
         {
-          name: 'title',
-          type: 'group',
-          label: { en: 'title', de: '' },
+          label: { en: 'Companies', de: 'Unternehmen' },
           fields: [
             {
-              name: 'label',
-              type: 'text',
-              label: { en: 'Main Title', de: '' },
-              localized: true,
+              name: 'unternehmenTab',
+              type: 'group',
+              label: false,
+              fields: audienceTabFields,
             },
           ],
         },
         {
-          name: 'sub_title',
-          label: { en: 'Submenus', de: 'Untermenu' },
-          type: 'array',
+          label: { en: 'Candidates', de: 'Kandidat:innen' },
           fields: [
             {
-              name: 'links',
-              label: { en: 'Submenu Links', de: 'Untermenu Links' },
-              type: 'array',
-              fields: [
-                {
-                  name: 'label',
-                  type: 'text',
-                  label: { en: 'sub Title', de: '' },
-                  localized: true,
-                },
-                {
-                  name: 'sliderHeading',
-                  type: 'text',
-                  label: {
-                    en: 'slider & CTA Heading',
-                    de: '',
-                  },
-                },
-                {
-                  name: 'slider',
-                  label: { en: 'slider & CTA', de: '' },
-                  type: 'array',
-                  fields: [
-                    {
-                      name: 'Slider Item',
-                      label: { en: 'slider', de: '' },
-                      type: 'array',
-                      fields: [
-                        {
-                          name: 'sliderImage',
-                          type: 'upload',
-                          label: {
-                            en: 'Slider Image',
-                            de: 'Slider Bild',
-                          },
-                          relationTo: 'media',
-                          required: false,
-                        },
-                        {
-                          name: 'Heading',
-                          type: 'text',
-                          label: {
-                            en: 'Heading',
-                            de: 'Überschrift',
-                          },
-                        },
-                        {
-                          name: 'richText',
-                          type: 'richText',
-                          label: {
-                            en: 'Rich Text',
-                            de: 'Rich Text',
-                          },
-                          editor: lexicalEditor({
-                            features: ({ defaultFeatures }) => [
-                              ...defaultFeatures,
-                              HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                              FixedToolbarFeature(),
-                              InlineToolbarFeature(),
-                              EXPERIMENTAL_TableFeature(),
-                            ],
-                          }),
-                        },
-                      ],
-                    },
-                    {
-                      name: 'CTA Item',
-                      label: { en: 'CTA', de: '' },
-                      type: 'array',
-                      fields: [
-                        {
-                          name: 'CTAHeading',
-                          type: 'text',
-                          label: {
-                            en: 'CTA Heading',
-                            de: '',
-                          },
-                        },
-                        {
-                          name: 'richText',
-                          type: 'richText',
-                          label: {
-                            en: 'Rich Text',
-                            de: 'Rich Text',
-                          },
-                          editor: lexicalEditor({
-                            features: ({ defaultFeatures }) => [
-                              ...defaultFeatures,
-                              HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                              FixedToolbarFeature(),
-                              InlineToolbarFeature(),
-                              EXPERIMENTAL_TableFeature(),
-                            ],
-                          }),
-                        },
-                        {
-                          name: 'CTA_link',
-                          type: 'group',
-                          label: {
-                            en: 'CTA Link',
-                            de: '',
-                          },
-                          fields: [
-                            {
-                              name: 'label',
-                              type: 'text',
-                              label: {
-                                en: 'CTA Label',
-                                de: '',
-                              },
-                            },
-                            {
-                              name: 'url',
-                              type: 'text',
-                              label: {
-                                en: 'URL',
-                                de: 'URL',
-                              },
-                            },
-                            {
-                              name: 'target',
-                              type: 'select',
-                              label: {
-                                en: 'Target',
-                                de: 'Ziel',
-                              },
-                              options: [
-                                { label: { en: 'Same Tab', de: 'Gleiches Tab' }, value: '_self' },
-                                { label: { en: 'New Tab', de: 'Neues Tab' }, value: '_blank' },
-                              ],
-                              defaultValue: '_self',
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
+              name: 'kandidatenTab',
+              type: 'group',
+              label: false,
+              fields: audienceTabFields,
             },
           ],
-        },
-      ],
-    },
-    {
-      name: 'Sub_link_title',
-      label: {
-        en: 'title',
-        de: '',
-      },
-      type: 'array',
-      fields: [
-        {
-          name: 'label',
-          type: 'text',
-          label: {
-            en: 'Link Label',
-            de: 'Linktext',
-          },
         },
       ],
     },

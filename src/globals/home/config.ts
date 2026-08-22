@@ -92,8 +92,8 @@ export const HomePage: GlobalConfig = {
         },
         {
           label: {
-            en: 'Unternehmen',
-            de: '',
+            en: 'Companies & candidates',
+            de: 'Unternehmen & Kandidat:innen',
           },
           fields: [Unternehmen],
         },
