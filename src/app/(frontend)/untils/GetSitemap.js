@@ -2,8 +2,9 @@ export default async function GetSiteMap(params) {
   try {
     const response = await fetch(
       `${
-        `${process.env.BASE_DOAMAIN}/${params}` ||
-        `https://www.meanova.de/${params}`
+        process.env.BASE_DOAMAIN
+          ? `${process.env.BASE_DOAMAIN}/${params}`
+          : `https://mea-nova.vercel.app/${params}`
       }`,
       {  next: { revalidate: 60 } }
     );

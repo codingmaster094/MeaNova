@@ -20,8 +20,15 @@ import { Pages } from './collections/Pages'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const siteURL = (
+  process.env.BASE_DOAMAIN ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.replace(/^https?:\/\//, '')}`
+    : 'https://mea-nova.vercel.app')
+).replace(/\/$/, '')
+
 export default buildConfig({
-  serverURL: 'https://www.meanova.de',
+  serverURL: siteURL,
   admin: {
     user: Users.slug,
     importMap: {
@@ -29,8 +36,9 @@ export default buildConfig({
     },
   },
   cors: [
+  'https://mea-nova.vercel.app',
   'https://www.meanova.de',
-  'http://localhost:3000'
+  'http://localhost:3000',
 ],
   collections: [Users, Media , Pages],
   globals: [
@@ -43,7 +51,7 @@ export default buildConfig({
     Robots,
   ],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

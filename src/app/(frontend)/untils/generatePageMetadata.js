@@ -1,22 +1,9 @@
+import Alldata from "./AllDataFatch";
+
 export default async function generatePageMetadata(params, fallback = {}) {
   try {
-    const fetchUrl = `${
-      process.env.NEXT_PUBLIC_BASE_URL ||
-      "https://www.meanova.de/my-route?slug="
-    }${params}`;
-
-    const metadataResponse = await fetch(fetchUrl, {
-      next: { revalidate: 60 }
-    });
-
-    console.log("metadata response status:", metadataResponse.status);
-
-    if (!metadataResponse.ok) {
-      throw new Error(`Failed to fetch data: ${metadataResponse.statusText}`);
-    }
-
-    const data = await metadataResponse.json();
-    const seo = data?.data?.seo || {};
+    const data = await Alldata(params);
+    const seo = data?.seo || {};
 
     // Use fallback if API data is missing
     const title = seo?.meta?.title || fallback.title || "Default Title";

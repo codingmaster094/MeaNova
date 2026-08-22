@@ -2,8 +2,9 @@ export default async function GetPosts(params) {
   try {
     const response = await fetch(
       `${
-        `${process.env.NEXT_RATGEBER_BASE_URL}/${params}` ||
-        `https://www.meanova.de/api/${params}`
+        process.env.NEXT_RATGEBER_BASE_URL
+          ? `${process.env.NEXT_RATGEBER_BASE_URL}/${params}`
+          : `https://mea-nova.vercel.app/api/${params}`
       }`,
       { next: { revalidate: 60 }}
     );

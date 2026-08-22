@@ -8,7 +8,7 @@ const getPagesSitemap = unstable_cache(
     const payload = await getPayload({ config })
     const SITE_URL =
       process.env.BASE_DOAMAIN ||
-      'https://www.meanova.de'
+      'https://mea-nova.vercel.app'
 
     const results = await payload.find({
       collection: 'pages',

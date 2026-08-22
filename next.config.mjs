@@ -2,9 +2,9 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your Next.js config here
+  allowedDevOrigins: ['192.168.1.31', 'localhost'],
   images: {
-   domains: ['mea-nova-consulting.vercel.app', 'meanova.de'],
+   domains: ['mea-nova.vercel.app', 'mea-nova-consulting.vercel.app', 'meanova.de'],
     unoptimized: true,
      formats: ['image/avif', 'image/webp'],
   },

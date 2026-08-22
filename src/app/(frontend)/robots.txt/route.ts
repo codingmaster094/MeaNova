@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(): Promise<Response> {
   const cmsRobotsUrl =
     process.env.CMS_ROBOTS_URL ||
-    `${process.env.BASE_DOAMAIN || 'https://www.meanova.de'}/my-route?slug=robots`;
+    `${process.env.BASE_DOAMAIN || 'https://mea-nova.vercel.app'}/my-route?slug=robots`;
 
   const TIMEOUT_MS = 5000;
   const controller = new AbortController();
@@ -85,7 +85,7 @@ export async function GET(): Promise<Response> {
   }
 
   // Fallback robots.txt
-  const baseDomain = process.env.BASE_DOAMAIN || 'https://www.meanova.de';
+  const baseDomain = process.env.BASE_DOAMAIN || 'https://mea-nova.vercel.app';
   const fallback = [
     'User-agent: *',
     'Allow: /',

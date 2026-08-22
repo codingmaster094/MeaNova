@@ -1,21 +1,15 @@
+import { getPayload } from "payload";
+import config from "@payload-config";
+
 export default async function Alldata(params) {
   try {
-    const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_BASE_URL ||
-        "https://www.meanova.de/my-route?slug="
-      }${params}`,
-      { next: { revalidate: 60 } }
-    );
-
-    if (!response) {
-      throw new Error(`Failed to fetch data: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.data;
+    const payload = await getPayload({ config });
+    return await payload.findGlobal({
+      slug: params,
+      depth: 2,
+    });
   } catch (error) {
     console.error("Error in Alldata:", error);
-    throw error; // Rethrow the error to be caught in the calling component
+    throw error;
   }
 }

@@ -1,6 +1,6 @@
 export async function GET() {
   try {
-    const res = await fetch("https://www.meanova.de/sitemap.xml", {
+    const res = await fetch(`${process.env.BASE_DOAMAIN || "https://mea-nova.vercel.app"}/sitemap.xml`, {
       next: { revalidate: 3600 }, // revalidate every hour
     });
 
@@ -19,7 +19,7 @@ export async function GET() {
     const fallbackXML = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-        <loc>${process.env.BASE_DOAMAIN || "https://www.meanova.de"}</loc>
+        <loc>${process.env.BASE_DOAMAIN || "https://mea-nova.vercel.app"}</loc>
         <lastmod>${new Date().toISOString()}</lastmod>
       </url>
     </urlset>`;
