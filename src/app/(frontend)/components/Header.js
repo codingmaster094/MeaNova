@@ -10,6 +10,12 @@ const Header = ({ HeaderData, MenusData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const lenisRef = useRef(null);
+  const logo = HeaderData?.Header_Logo;
+  const logoUrl = typeof logo === "object" && logo?.url ? logo.url : null;
+  const logoAlt = (typeof logo === "object" && logo?.alt) || "MeaNova";
+  const cta = HeaderData?.link;
+  const ctaUrl = cta?.url || "/";
+  const menus = MenusData?.menus ?? [];
 
   useEffect(() => {
     const scroller = new Lenis({
@@ -52,15 +58,19 @@ const Header = ({ HeaderData, MenusData }) => {
         <div className="container">
           <div className="flex justify-between items-center gap-50">
             <Link href="/" aria-roledescription="link">
-              <Image
-                className="w-100 xl:w-135"
-                src={HeaderData.Header_Logo.url}
-                alt={HeaderData.Header_Logo.alt}
-                role="img"
-                width={200}
-                height={60}
-                fetchPriority="high"
-              />
+              {logoUrl ? (
+                <Image
+                  className="w-100 xl:w-135"
+                  src={logoUrl}
+                  alt={logoAlt}
+                  role="img"
+                  width={200}
+                  height={60}
+                  fetchPriority="high"
+                />
+              ) : (
+                <span className="font-jakarta font-medium text-primary">MeaNova</span>
+              )}
             </Link>
 
             <nav
@@ -70,7 +80,7 @@ const Header = ({ HeaderData, MenusData }) => {
               aria-label="menü"
             >
               <ul className="flex justify-center items-center gap-48 [&_li>a]:text-primary [&_li>a]:font-outfit [&_li>a]:text-base font-light">
-                {MenusData.menus.map((menu, index) => {
+                {menus.map((menu, index) => {
                   const menuUrl = menu.link?.url || "/";
                   const isAnchor = menuUrl.startsWith("#"); // detect section links
                   const isActive =
@@ -111,21 +121,21 @@ const Header = ({ HeaderData, MenusData }) => {
             <div className="flex justify-end items-center gap-16 md:gap-24">
               <Link
                 href={
-                  pathname !== "/" && HeaderData.link.url.startsWith("#")
-                    ? `/${HeaderData.link.url}`
-                    : HeaderData.link.url
+                  pathname !== "/" && ctaUrl.startsWith("#")
+                    ? `/${ctaUrl}`
+                    : ctaUrl
                 }
-                onClick={(e) => handleSmoothScroll(e, HeaderData.link.url)}
-                target={HeaderData.link.target}
+                onClick={(e) => handleSmoothScroll(e, ctaUrl)}
+                target={cta?.target}
                 aria-label="Kontaktieren Sie uns – Startseite"
                 className="btn-dark !hidden sm:!block"
               >
-                <span>{HeaderData.link.Kontakt_label}</span>
+                <span>{cta?.Kontakt_label}</span>
               </Link>
 
               <Link
-                href={HeaderData.link.url}
-                target={HeaderData.link.target}
+                href={ctaUrl}
+                target={cta?.target}
                 aria-label="Kontaktieren Sie uns – Startseite"
                 className="bg-black p-4 rounded-sm !block sm:!hidden"
               >
@@ -162,8 +172,8 @@ const Header = ({ HeaderData, MenusData }) => {
 
       {/* OffCanvas Menu */}
       <OffCanvas
-        logo={HeaderData.Header_Logo.url}
-        menus={MenusData.menus}
+        logo={logoUrl}
+        menus={menus}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         pathname={pathname}

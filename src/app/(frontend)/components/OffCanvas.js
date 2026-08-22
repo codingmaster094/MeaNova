@@ -20,15 +20,19 @@ const OffCanvas = ({ logo, menus, isOpen, onClose, pathname }) => {
         aria-label="Hauptmenü"
       >
         <Link href="/" aria-roledescription='link'>
-          <Image
-            className="w-100 xl:w-135"
-            src={logo}
-            alt="Company Name logo"
-            role="img"
-            width={200}
-            height={60}
-            fetchPriority="high"
-          />
+          {logo ? (
+            <Image
+              className="w-100 xl:w-135"
+              src={logo}
+              alt="Company Name logo"
+              role="img"
+              width={200}
+              height={60}
+              fetchPriority="high"
+            />
+          ) : (
+            <span className="font-jakarta font-medium text-primary">MeaNova</span>
+          )}
         </Link>
         {/* Close Button */}
         <button
