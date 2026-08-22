@@ -91,10 +91,7 @@ export const HomePage: GlobalConfig = {
           fields: [Personalvermittlung],
         },
         {
-          label: {
-            en: 'Companies & candidates',
-            de: 'Unternehmen & Kandidat:innen',
-          },
+          label: 'Unternehmen & Kandidat:innen',
           fields: [Unternehmen],
         },
         {

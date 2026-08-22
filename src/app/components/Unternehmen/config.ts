@@ -6,19 +6,19 @@ const cardFields: Field[] = [
     type: 'upload',
     relationTo: 'media',
     required: false,
-    label: { en: 'Icon', de: 'Icon' },
+    label: 'Icon',
   },
   {
     name: 'heading',
     type: 'text',
     required: false,
-    label: { en: 'Title', de: 'Titel' },
+    label: 'Titel',
   },
   {
     name: 'text',
     type: 'textarea',
     required: false,
-    label: { en: 'Description', de: 'Beschreibung' },
+    label: 'Beschreibung',
   },
 ]
 
@@ -27,60 +27,61 @@ const audienceTabFields: Field[] = [
     name: 'tabLabel',
     type: 'text',
     required: true,
-    label: { en: 'Tab button', de: 'Tab-Button' },
+    label: 'Tab-Button',
     admin: {
-      description: 'Shown as the clickable tab (e.g. Unternehmen or Kandidat:innen).',
+      description: 'Wird als klickbarer Tab angezeigt (z. B. Unternehmen oder Kandidat:innen).',
     },
   },
   {
     name: 'topHeading',
     type: 'text',
-    label: { en: 'Top slider heading', de: 'Obere Slider-Überschrift' },
+    label: 'Obere Slider-Überschrift',
   },
   {
     name: 'topCards',
     type: 'array',
-    labels: { singular: { en: 'Card', de: 'Karte' }, plural: { en: 'Cards', de: 'Karten' } },
-    label: { en: 'Top cards', de: 'Obere Karten' },
+    labels: { singular: 'Karte', plural: 'Karten' },
+    label: 'Obere Karten',
     fields: cardFields,
   },
   {
     type: 'collapsible',
-    label: { en: 'Middle CTA', de: 'Mittlerer CTA' },
+    label: 'Mittlerer CTA',
     fields: [
       {
         name: 'ctaHeading',
         type: 'text',
-        label: { en: 'CTA heading', de: 'CTA-Überschrift' },
+        label: 'CTA-Überschrift',
       },
       {
         name: 'ctaText',
         type: 'textarea',
-        label: { en: 'CTA text', de: 'CTA-Text' },
+        label: 'CTA-Text',
       },
       {
         name: 'ctaLink',
         type: 'group',
-        label: { en: 'CTA button', de: 'CTA-Button' },
+        label: 'CTA-Button',
         fields: [
           {
             name: 'label',
             type: 'text',
-            label: { en: 'Label', de: 'Beschriftung' },
+            label: 'Beschriftung',
           },
           {
             name: 'url',
             type: 'text',
-            label: { en: 'URL', de: 'URL' },
-            admin: { description: 'e.g. #kontakt or /#kontakt' },
+            label: 'URL',
+            admin: { description: 'z. B. #kontakt oder /#kontakt' },
           },
           {
             name: 'target',
             type: 'select',
+            label: 'Ziel',
             defaultValue: '_self',
             options: [
-              { label: { en: 'Same tab', de: 'Gleiches Tab' }, value: '_self' },
-              { label: { en: 'New tab', de: 'Neues Tab' }, value: '_blank' },
+              { label: 'Gleiches Tab', value: '_self' },
+              { label: 'Neues Tab', value: '_blank' },
             ],
           },
         ],
@@ -90,13 +91,13 @@ const audienceTabFields: Field[] = [
   {
     name: 'bottomHeading',
     type: 'text',
-    label: { en: 'Bottom slider heading', de: 'Untere Slider-Überschrift' },
+    label: 'Untere Slider-Überschrift',
   },
   {
     name: 'bottomCards',
     type: 'array',
-    labels: { singular: { en: 'Card', de: 'Karte' }, plural: { en: 'Cards', de: 'Karten' } },
-    label: { en: 'Bottom cards', de: 'Untere Karten' },
+    labels: { singular: 'Karte', plural: 'Karten' },
+    label: 'Untere Karten',
     fields: cardFields,
   },
 ]
@@ -104,16 +105,13 @@ const audienceTabFields: Field[] = [
 export const Unternehmen: Field = {
   name: 'unternehmen',
   type: 'group',
-  label: {
-    en: 'Companies & candidates',
-    de: 'Unternehmen & Kandidat:innen',
-  },
+  label: 'Unternehmen & Kandidat:innen',
   fields: [
     {
       type: 'tabs',
       tabs: [
         {
-          label: { en: 'Companies', de: 'Unternehmen' },
+          label: 'Unternehmen',
           fields: [
             {
               name: 'unternehmenTab',
@@ -124,7 +122,7 @@ export const Unternehmen: Field = {
           ],
         },
         {
-          label: { en: 'Candidates', de: 'Kandidat:innen' },
+          label: 'Kandidat:innen',
           fields: [
             {
               name: 'kandidatenTab',
