@@ -1,6 +1,8 @@
 import generatePageMetadata from "./untils/generatePageMetadata";
 import HomePage from "../(frontend)/home/page";
 
+export const dynamic = "force-dynamic";
+
 // Main component that renders the page content
 export default async function Home() {
   return <HomePage />;

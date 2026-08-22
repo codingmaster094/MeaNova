@@ -241,7 +241,7 @@ const Tab2 = ({ data }) => {
                                                 return null;
                                             }
                                         })}
-                                {cta.CTA_link && (
+                                {cta.CTA_link?.url && (
                                   <Link
                                     href={cta.CTA_link.url}
                                     onClick={(e) => handleSmoothScroll(e, cta.CTA_link.url)}

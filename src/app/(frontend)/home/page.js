@@ -10,6 +10,8 @@ import "swiper/css/navigation";
 import 'swiper/css/pagination';
 import Alldata from "../untils/AllDataFatch"
 import SEO_schema from "../components/SEO_schema"
+export const dynamic = "force-dynamic";
+
 const page = async() => {
    let HomePageData;
   try {

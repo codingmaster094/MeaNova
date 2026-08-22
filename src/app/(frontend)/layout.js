@@ -5,6 +5,8 @@ import "../../../public/css/globals.css";
 import Footer from "../(frontend)/footer/page";
 import Cookie from "./components/Cookie";
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="de">

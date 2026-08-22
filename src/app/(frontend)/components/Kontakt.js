@@ -234,7 +234,7 @@ File(s): ${files.length > 0 ? files.map(f => f.name).join(', ') : 'kein Upload, 
               
               <p>
                 {FormHeading}
-                {DatenschutzerklarungLink != undefined && (
+                {DatenschutzerklarungLink?.url && (
                   <Link href={DatenschutzerklarungLink.url} className="font-semibold text-black underline">{DatenschutzerklarungLink.label}</Link>
                 )}
               </p>

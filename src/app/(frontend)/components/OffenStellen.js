@@ -95,14 +95,16 @@ const OffenStellen = (
 
                                 </div>
                                 {
-                                    BTN ?
+                                    BTN?.url ?
                                         <Link onClick={(e) => handleSmoothScroll(e, BTN.url)} href={BTN.url} aria-label="Kontaktieren Sie uns – Startseite" className="btn-dark block mt-24"><span>{BTN.label}</span></Link>
                                         :
                                         null
                                 }
                             </div>
                             <div className="w-full lg:w-1/2 xxl:w-full xxl:-mr-[calc((100vw-1470px)/2)] relative lg:sticky lg:top-50">
-                                <Image src={SideImage?.url}  alt={SideImage?.alt} role="img" width={1920} height={900} fetchPriority="high" sizes="(max-width: 1024px) 100vw, 1920px" className="relative lg:sticky lg:top-50  object-cover" />      
+                                {SideImage?.url ? (
+                                <Image src={SideImage.url}  alt={SideImage?.alt || ""} role="img" width={1920} height={900} fetchPriority="high" sizes="(max-width: 1024px) 100vw, 1920px" className="relative lg:sticky lg:top-50  object-cover" />
+                                ) : null}      
                             </div>
                         </div>
                     </div>
