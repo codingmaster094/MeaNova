@@ -24,32 +24,32 @@ const page = async() => {
   }
   return (
     <>
-    <SEO_schema slug="home" faqs={HomePageData?.FaqSection?.FaqContent} />
+      <SEO_schema slug="home" faqs={HomePageData?.FaqSection?.FaqContent} />
       <HeroSection
         Heading={HomePageData?.hero?.Heading}
         SubHeading={HomePageData?.hero?.SubHeading}
         BG_Image={HomePageData?.hero?.heroImage}
         BTN={HomePageData?.hero?.hero_link}
-        Description={HomePageData?.hero?.richText.root.children}
+        Description={HomePageData?.hero?.richText?.root?.children}
       />
       <Personalvermittlung
         Side_Image={HomePageData?.personalvermittlung?.personalvermittlung_Image}
         Heading={HomePageData?.personalvermittlung?.Heading}
-        Description={HomePageData?.personalvermittlung?.description.root?.children}
+        Description={HomePageData?.personalvermittlung?.description?.root?.children}
       />
-      <Tab2 data={HomePageData.unternehmen}/>
-      <OffenStellen 
+      <Tab2 data={HomePageData?.unternehmen} />
+      <OffenStellen
         SideImage={HomePageData?.offeneStellen?.offeneStellenImage}
         Heading={HomePageData?.offeneStellen?.heading}
-        Description={HomePageData?.offeneStellen?.description.root.children}
+        Description={HomePageData?.offeneStellen?.description?.root?.children}
         BTN={HomePageData?.offeneStellen?.offeneStellen_link}
       />
-     <FAQ
+      <FAQ
         Section_Show={HomePageData?.FaqSection?.enableFAQ}
         title={HomePageData?.FaqSection?.Heading}
         FAQ_Data={HomePageData?.FaqSection?.FaqContent}
       />
-       <Kontakt
+      <Kontakt
         Heading={HomePageData?.kontakt?.Heading}
         SubHeading={HomePageData?.kontakt?.SubHeading}
         FormHeading={HomePageData?.kontakt?.FormHeading}

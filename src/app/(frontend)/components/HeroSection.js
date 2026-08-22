@@ -16,17 +16,19 @@ const HeroSection = (
         <>
             <section className='h-full xxl:h-[calc(100vh-100px)] overflow-hidden'>
                 <div className='relative h-full flex justify-center items-center flex-col lg:flex-row'>
+                    {BG_Image?.url ? (
                     <Image
                         className="aspect-square lg:aspect-auto mr-0 ml-auto relative lg:absolute lg:top-0 right-0 lg:-right-3/12 z-0 h-full object-cover"
                         src={BG_Image.url}
-                        alt={BG_Image.alt}
+                        alt={BG_Image.alt || ""}
                         role="img"
                         width={1920}
                         height={900}
-                        fetchPriority="high" // This is redundant if priority={true} is used, but doesn't hurt.
+                        fetchPriority="high"
                         sizes="(max-width: 1024px) 100vw, 1920px"
                         priority={true}
                     />
+                    ) : null}
                     <div className="container">
                         <div className='h-full relative z-10 flex flex-col space-y-16 lg:mt-0 mt-32 mb-32 lg:mb-0 lg:py-100'>
                             <div className='lg:py-32 lg:px-48 bg-white w-fit font-jakarta font-normal space-y-8'>
@@ -78,7 +80,7 @@ const HeroSection = (
 
                                 {
                                     BTN ?
-                                        <Link href={BTN.url} target={BTN.target} aria-label="Kontaktieren Sie uns – Startseite" className='btn-dark block'>
+                                        <Link href={BTN.url || "/"} target={BTN.target} aria-label="Kontaktieren Sie uns – Startseite" className='btn-dark block'>
                                             <span>{BTN.label}</span>
                                         </Link>
                                         :

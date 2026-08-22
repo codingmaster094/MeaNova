@@ -54,7 +54,7 @@ const SEO_schema = async ({ slug, faqs }) => {
             "name": faq.title,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": faq.richText.root.children[0].children[0].text.replace(/<\/?p>/g, "")
+              "text": faq.richText?.root?.children?.[0]?.children?.[0]?.text?.replace(/<\/?p>/g, "") || ""
             }
           }))
         }
